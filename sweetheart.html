@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A Message For You, Srishti</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg1:#ffe3ec;--bg2:#ffc2d6;--bg3:#ff9fc0;
+  --card:rgba(255,255,255,.55);--card-border:rgba(255,255,255,.8);
+  --text:#7a1f45;--muted:#a23a67;--accent:#e63e7a;--accent2:#ff6fa3;
+  --heart:#e63e7a;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg1:#2a0a1b;--bg2:#4a1230;--bg3:#6b1b45;
+    --card:rgba(255,255,255,.08);--card-border:rgba(255,255,255,.18);
+    --text:#ffe3ee;--muted:#ffb3cf;--accent:#ff5c93;--accent2:#ff8db4;
+    --heart:#ff5c93;
+  }
+}
+:root[data-theme="dark"]{
+  --bg1:#2a0a1b;--bg2:#4a1230;--bg3:#6b1b45;
+  --card:rgba(255,255,255,.08);--card-border:rgba(255,255,255,.18);
+  --text:#ffe3ee;--muted:#ffb3cf;--accent:#ff5c93;--accent2:#ff8db4;
+  --heart:#ff5c93;
+}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{
+  margin:0;height:100%;min-height:100%;overflow:hidden;
+  font-family:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color:var(--text);
+  background:linear-gradient(160deg,var(--bg1),var(--bg2) 55%,var(--bg3));
+  background-color:var(--bg2);
+}
+#hearts{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.h{position:absolute;bottom:-40px;color:var(--heart);opacity:0;animation:float linear infinite}
+@keyframes float{
+  0%{transform:translateY(0) translateX(0) scale(.6);opacity:0}
+  10%{opacity:.7}
+  100%{transform:translateY(-110vh) translateX(30px) scale(1.2);opacity:0}
+}
+.page{
+  position:absolute;inset:0;z-index:1;
+  display:flex;align-items:center;justify-content:center;
+  padding:24px;
+  padding-top:calc(24px + env(safe-area-inset-top,0px));
+  padding-bottom:calc(24px + env(safe-area-inset-bottom,0px));
+  opacity:0;visibility:hidden;transform:translateY(24px) scale(.97);
+  transition:opacity .8s ease,transform .8s ease,visibility .8s;
+}
+.page.active{opacity:1;visibility:visible;transform:none}
+.card{
+  width:100%;max-width:440px;text-align:center;
+  background:var(--card);
+  border:1px solid var(--card-border);
+  border-radius:32px;padding:44px 28px;
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 20px 60px rgba(230,62,122,.25);
+}
+.big-heart{
+  font-size:64px;line-height:1;color:var(--heart);
+  display:inline-block;animation:beat 1.4s ease-in-out infinite;
+  filter:drop-shadow(0 6px 14px rgba(230,62,122,.4));
+}
+@keyframes beat{0%,100%{transform:scale(1)}20%{transform:scale(1.2)}40%{transform:scale(1)}60%{transform:scale(1.12)}}
+.small{margin:22px 0 4px;font-size:15px;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);font-weight:400}
+h1{
+  font-family:'Dancing Script','Brush Script MT',cursive;
+  font-size:clamp(40px,11vw,58px);line-height:1.15;margin:8px 0 30px;
+  color:var(--accent);font-weight:700;
+}
+h2{
+  font-family:'Dancing Script','Brush Script MT',cursive;
+  font-size:clamp(34px,9vw,46px);margin:18px 0 18px;color:var(--accent);font-weight:700;
+}
+.msg{font-size:19px;line-height:1.8;margin:0 0 12px;font-weight:300}
+.msg strong{font-weight:500;color:var(--accent)}
+.btn{
+  font-family:inherit;font-size:16px;font-weight:500;letter-spacing:.04em;
+  color:#fff;border:0;cursor:pointer;
+  padding:15px 34px;border-radius:999px;
+  background:linear-gradient(135deg,var(--accent2),var(--accent));
+  box-shadow:0 10px 26px rgba(230,62,122,.45);
+  transition:transform .2s,box-shadow .2s;
+  animation:glow 2.2s ease-in-out infinite;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:scale(.96)}
+@keyframes glow{0%,100%{box-shadow:0 10px 26px rgba(230,62,122,.45)}50%{box-shadow:0 10px 38px rgba(230,62,122,.8)}}
+.ghost{
+  margin-top:26px;background:none;border:0;cursor:pointer;
+  font-family:inherit;font-size:14px;color:var(--muted);text-decoration:underline;
+}
+.divider{color:var(--heart);letter-spacing:.5em;margin:14px 0}
+#p2{align-items:flex-start;overflow-y:auto;-webkit-overflow-scrolling:touch}
+#p2 .card{margin:auto;max-width:680px;padding:clamp(25px,6vw,54px);background:rgba(255,255,255,.88);color:#352634;font-family:Georgia,'Times New Roman',serif;border-radius:28px;box-shadow:0 24px 70px rgba(123,54,83,.18)}
+#p2 .eyebrow{letter-spacing:3px;text-transform:uppercase;font:11px Arial,sans-serif;color:#b45f7c}
+#p2 h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(35px,8vw,58px);line-height:1.04;margin:17px 0 12px;font-weight:normal;color:#352634}
+#p2 h1 em{color:#c65f83;font-weight:normal}
+#p2 .intro{font:15px/1.8 Arial,sans-serif;color:#755d6c;max-width:470px;margin:0 auto 25px}
+#p2 .divider{color:#d98ca5;font-size:22px;margin:18px 0;letter-spacing:normal}
+#p2 .letter{font-size:clamp(17px,3.8vw,20px);line-height:1.85;text-align:left}
+#p2 .letter p{margin:0 0 15px}
+#p2 .question{font-size:clamp(23px,5vw,31px);line-height:1.35;margin:27px 0 22px}
+#p2 .buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+#p2 .buttons button{border:0;border-radius:999px;padding:14px 24px;font:14px Arial,sans-serif;cursor:pointer;transition:transform .18s,box-shadow .18s}
+#p2 .buttons button:hover{transform:translateY(-2px);box-shadow:0 8px 20px #d9a2b6}
+#p2 .yes{background:#c65f83;color:#fff}
+#p2 .later{background:#fff0f4;color:#8c4b65;border:1px solid #f3d1dc!important}
+#response{display:none;margin:24px auto 0;padding:18px;background:#fff3f6;border-radius:16px;font:15px/1.7 Arial,sans-serif}
+#p2 .foot{margin-top:30px;color:#a58b98;font:11px Arial,sans-serif;line-height:1.6}
+#p2 .tiny{font-size:12px;color:#a17c8d;margin-top:14px;font-family:Arial,sans-serif}
+#p2 .ghost{color:#a17c8d;margin-top:18px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<div id="hearts" aria-hidden="true"></div>
+
+<section class="page active" id="p1">
+  <div class="card">
+    <div class="big-heart">❤</div>
+    <p class="small">Just for you</p>
+    <h1>A message for you,<br>Srishti</h1>
+    <button class="btn" id="openBtn">See Message 💌</button>
+  </div>
+</section>
+
+<section class="page" id="p2">
+  <div class="card">
+    <div class="eyebrow">A little note from the heart</div>
+    <h1>For you, <em>Srishti</em> ♡</h1>
+    <p class="intro">Some feelings stay quietly in your heart for a long time. I thought it was time to share mine—with honesty, and no pressure.</p>
+    <div class="divider">✧ &nbsp; ♡ &nbsp; ✧</div>
+    <section class="letter">
+      <p>Hi Srishti Pathak,</p>
+      <p>I still remember seeing you for the first time in <strong>Vivekanand House</strong>, when I was in Class 9. Later, seeing you again on Christmas Day made that memory feel even more special.</p>
+      <p>Somewhere along the way, you became my crush. I’ve wanted to tell you how I feel, but never quite found the right moment. So here I am, saying it simply: <strong>I like you.</strong></p>
+      <p>I don’t know what you feel, and I don’t want you to feel any pressure to say yes. I just wanted to be honest with you.</p>
+    </section>
+    <div class="divider">♡</div>
+    <div class="question">Agar tumhare dil mein abhi thodi si khaali jagah ho…<br>toh kya usmein mere naam ki ek chhoti si jagah book kar dogi? ♡</div>
+    <p class="intro">I’m not asking for a promise or a perfect story. Bas ek chance—taaki hum baat kar sakein, ek-doosre ko jaan sakein, aur dekhein ki kahaani humein kahan le jaati hai.</p>
+    <div class="buttons">
+      <button class="yes" onclick="showAnswer('yes')">Mere liye jagah hai ♡</button>
+      <button class="later" onclick="showAnswer('think')">Thoda waqt chahiye</button>
+      <button class="later" onclick="showAnswer('no')">Sirf dost</button>
+    </div>
+    <div id="response" role="status"></div>
+    <div class="tiny">Whatever your answer is, I’ll respect it. No pressure, ever.</div>
+    <div class="foot">Made with honesty, not expectations. ♡</div>
+    <button class="ghost" id="backBtn">← Back</button>
+  </div>
+</section>
+
+<script>
+(function(){
+  var box=document.getElementById('hearts');
+  var sym=['❤','♥','💗','💕'];
+  for(var i=0;i<22;i++){
+    var s=document.createElement('span');
+    s.className='h';
+    s.textContent=sym[i%sym.length];
+    s.style.left=(Math.random()*100)+'%';
+    s.style.fontSize=(14+Math.random()*26)+'px';
+    s.style.animationDuration=(7+Math.random()*9)+'s';
+    s.style.animationDelay=(-Math.random()*14)+'s';
+    box.appendChild(s);
+  }
+  var p1=document.getElementById('p1'),p2=document.getElementById('p2');
+  document.getElementById('openBtn').onclick=function(){p1.classList.remove('active');p2.classList.add('active')};
+  document.getElementById('backBtn').onclick=function(){p2.classList.remove('active');p1.classList.add('active')};
+})();
+function showAnswer(kind){
+  var r=document.getElementById('response');
+  var m={
+    yes:'Yeh padhkar sach mein smile aa gayi. ♡ Chalo, bina jaldi kiye baat shuru karte hain aur ek-doosre ko achhe se jaante hain.',
+    think:'Bilkul, jitna waqt chahiye le lo. Main tum par koi pressure nahi daalna chahta. Tumhara comfortable hona sabse zaroori hai. ♡',
+    no:'Sach batane ke liye thank you. Main tumhari feelings ki respect karta hoon. Khush rehna, Srishti. ♡'
+  };
+  r.textContent=m[kind];r.style.display='block';
+}
+</script>
+</body>
+</html>
